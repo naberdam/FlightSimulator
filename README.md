@@ -7,7 +7,7 @@ and receive information from certain view model and send that data to the server
 Furthermore, the view models and the model are initialized at the startup of the program, which happens in the App level, 
 in order to separate the model from the view so that they do not know each other and thus the MVVM principle will be realized.
 
-# Additional Features:
+### Additional Features:
 1. In the sub main window we addedd a back button for the user to have the option to disconnect from the server and move to another server.
 2. We added an exit button that is displayed throughout the program and gives the user the option to exit the program whenever they want.
 3. As soon as an error has occurred in the model, a text box appears on the screen displaying the error with a corresponding message so that we can inform the user.
