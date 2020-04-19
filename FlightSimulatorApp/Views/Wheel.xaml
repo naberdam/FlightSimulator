@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="FlightSimulator.Views.Wheel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightSimulator.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Viewbox Height="450" Width="700">
+        <Grid Height="450" Width="700">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="79*"/>
+                <ColumnDefinition Width="493*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48*"/>
+                <RowDefinition Height="191*"/>
+                <RowDefinition Height="210*"/>
+            </Grid.RowDefinitions>
+            <local:Joystick x:Name="ourJoystick" ElevatorValue="{Binding Path=VM_Elevator, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" 
+                            RudderValue="{Binding Path=VM_Rudder, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" Margin="85,1,256,83.6" 
+                            Grid.RowSpan="3" Grid.ColumnSpan="2"/>
+            <Slider x:Name="aileron" Value="{Binding Path=VM_Aileron, Mode=OneWayToSource}" HorizontalAlignment="Left" Orientation="Vertical" 
+                    Minimum="-1" Maximum="1" Margin="57,39,0,0" VerticalAlignment="Top" Height="270" Width="28" TickPlacement="BottomRight" 
+                    TickFrequency="0.1" Grid.RowSpan="3"/>
+            <Slider x:Name="throttle" Value="{Binding Path=VM_Throttle, Mode=OneWayToSource}" HorizontalAlignment="Left" Orientation="Vertical" 
+                    Minimum="0" Maximum="1" Margin="6,39,0,0" VerticalAlignment="Top" Height="270" Width="28" TickPlacement="BottomRight" 
+                    TickFrequency="0.1" Grid.RowSpan="3"/>
+            <Label Content="Throttle" FontSize="16" HorizontalAlignment="Left" Height="27" Margin="-2,0,0,0" VerticalAlignment="Top" Width="63"/>
+            <Label Content="Aileron" FontSize="16" HorizontalAlignment="Left" Height="27" Margin="69,1,0,0" VerticalAlignment="Top" Width="77" Grid.ColumnSpan="2"/>
+
+            <Label Content="Rudder" HorizontalAlignment="Left" FontSize="16" Height="26" Margin="288.2,26,0,0" VerticalAlignment="Top" Width="73" Grid.Column="1" Grid.RowSpan="2"/>
+            <Label Content="Elevator" HorizontalAlignment="Left" FontSize="16" Height="26" Margin="287.2,7,0,0" VerticalAlignment="Top" Width="73" Grid.Column="1"/>
+            <TextBox Grid.Column="1" IsEnabled="False" HorizontalAlignment="Left" FontSize="13" Height="26" Margin="355.2,7,0,0" TextWrapping="Wrap" 
+                     Text="{Binding ElementName=ourJoystick, Path=ElevatorValue, StringFormat=N3, Mode=OneWay}" VerticalAlignment="Top" Width="40"/>
+            <TextBox IsEnabled="False" HorizontalContentAlignment="Center" HorizontalAlignment="Left" FontSize="13" Height="26" Margin="1,82.8,0,0" 
+                     TextWrapping="Wrap" Text="{Binding ElementName=throttle, Path=Value, StringFormat=N3}" VerticalAlignment="Top" Width="45" Grid.Row="2"/>
+            <TextBox IsEnabled="False" HorizontalContentAlignment="Center" HorizontalAlignment="Left" FontSize="13" Height="26" Margin="49,82.8,0,0" 
+                     TextWrapping="Wrap" Text="{Binding ElementName=aileron, Path=Value, StringFormat=N3}" VerticalAlignment="Top" Width="45" Grid.Row="2"/>
+            <TextBox Grid.Column="1" IsEnabled="False" HorizontalAlignment="Left" FontSize="13" Height="26" Margin="355.2,26,0,0" TextWrapping="Wrap" 
+                     Text="{Binding ElementName=ourJoystick, Path=RudderValue, StringFormat=N3, Mode=OneWay}" VerticalAlignment="Top" Width="40" Grid.RowSpan="2"/>
+        </Grid>
+    </Viewbox>
+</UserControl>
